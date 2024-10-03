@@ -1,0 +1,385 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+header {
+    background-color: #FFA500;
+    color: white;
+    text-align: center;
+    height: 75px; /* Set a specific height for the header */
+    display: flex;
+    align-items: center; /* Vertically center content if needed */
+    justify-content: center; /* Horizontally center content if needed */
+}
+h1 {
+    margin: 0;
+}
+
+/* Center the products in a row */
+.product-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem; /* Space between products */
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    padding: 2px;
+    margin: 0 auto; /* Center the entire product list section */
+}
+
+/* Center the "Our Marmalades" heading */
+.product-list h2 {
+    width: 100%; /* Take up full width */
+    text-align: center;
+    margin-bottom: 3px;
+    font-size: 1.5rem;
+}
+
+.product {
+    background-color: #FF69B4; /* Pink background for each product */
+    border-radius: 10px;
+    padding: 1rem;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.product:hover {
+    transform: scale(1.05);
+}
+
+.product img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    color: #FFA500;
+    text-align: center;
+}
+h3 {
+    color: #ffffff;
+}
+p {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+button {
+    background-color: #32CD32;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+button:hover {
+    background-color: #2eb82e;
+}
+#cart {
+    background-color: #FFA500;
+    padding: 2rem;
+    color: white;
+    text-align: center;
+    margin: 2rem 0;
+}
+#cart-items div {
+    margin-bottom: 1rem;
+}
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+#newsletter-signup {
+    padding: 2rem;
+    background-color: #ffe0b3; /* Soft orange background */
+    text-align: center;
+    margin-top: 45px; /* Add space above the sign-up section */
+}
+
+#signup-form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#signup-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+#signup-form input {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#signup-form button {
+    padding: 0.75rem 1.5rem;
+    background-color: #FF69B4; /* Pink button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#signup-form button:hover {
+    background-color: #ff4d94;
+}
+
+#signup-success-message {
+    display: none; /* Initially hidden */
+    color: green;  /* Success message color */
+    margin-top: 10px;
+}
+
+#signup-success-message.show {
+    display: block; /* This will show the success message */
+}
+
+
+/* Cart Display in the Top Right Corner */
+#cart-info {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #FFA500; /* Orange background */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Cart icon styling */
+#cart-info i {
+    margin-right: 10px;
+    font-size: 1.5rem; /* Adjust icon size */
+    color: white;
+}
+
+/* Adjust the spacing between text */
+#cart-info span {
+    margin-left: 5px;
+}
+
+/* Adjust spacing between cart count and the word "items" */
+#cart-info .cart-label {
+    margin-left: 5px;
+    margin-right: 10px;
+}
+
+/* Hover effect */
+#cart-info:hover {
+    background-color: #ff8c00; /* Darker orange */
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Style for cart page only, using #cart-main */
+#cart-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    padding: 20px;
+}
+
+/* Style the cart details section */
+#cart-details {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Style the cart items list */
+#cart-items-list {
+    text-align: left;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+#cart-items-list div {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+/* Style the total amount */
+#cart-details p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+
+/* Style the pay button */
+#pay-button {
+    background-color: #32CD32; /* Green */
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#pay-button:hover {
+    background-color: #28a428;
+}
+
+/* Header styling */
+header {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #FFA500; /* Orange */
+    color: white;
+    margin-bottom: 20px;
+}
+
+/* Footer styling */
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+/* Style the total amount to be black */
+#cart-items-list p {
+    color: black;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
+
+/* Footer stays at the bottom and appears only when scrolling down */
+footer {
+    position: relative;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Ensure that the body takes up at least the full viewport height */
+body {
+    min-height: 100vh; /* Ensure body takes up the full height */
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1; /* Make main content take up the remaining space */
+}
+
+/* Style the Remove button */
+.remove-button {
+    background-color: #FFA500; /* Orange background */
+    color: white;              /* White text */
+    border: none;              /* Remove the border */
+    padding: 5px 10px;         /* Adjust the padding to make it smaller */
+    font-size: 0.9rem;         /* Slightly smaller font size */
+    border-radius: 5px;        /* Rounded corners */
+    cursor: pointer;           /* Show pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover effect for the Remove button */
+.remove-button:hover {
+    background-color: #ff8c00; /* Darker orange on hover */
+}
+
+/* Style for the Thank You page */
+#thank-you-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    text-align: center;
+    background-color: #f0f0f0;
+}
+
+#thank-you-message {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#thank-you-message h2 {
+    color: #32CD32; /* Green for the heading */
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+#thank-you-message p {
+    font-size: 1.1rem;
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+#thank-you-message strong {
+    color: #FFA500; /* Orange for emphasis */
+}
+
+#thank-you-message a {
+    color: #32CD32; /* Green for the contact link */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#back-home a {
+    display: inline-block;
+    background-color: #FFA500;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 2rem;
+    transition: background-color 0.3s ease;
+}
+
+#back-home a:hover {
+    background-color: #ff8c00; /* Darker orange on hover */
+}
