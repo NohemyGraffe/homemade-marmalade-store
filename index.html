@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homemade Marmalade Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Homemade Marmalade Store</h1>
+    </header>
+    <main>
+        <section class="product-list">
+            <h2>Our Marmalades</h2>
+            <div class="product">
+                <h3>Classic Orange Marmalade</h3>
+                <p>$5.00</p>
+                <button class="buy-button" data-product="Classic Orange Marmalade" data-price="5.00">Buy Now</button>
+            </div>
+            <div class="product">
+                <h3>Spicy Ginger Marmalade</h3>
+                <p>$6.00</p>
+                <button class="buy-button" data-product="Spicy Ginger Marmalade" data-price="6.00">Buy Now</button>
+            </div>
+        </section>
+        <section id="cart">
+            <h2>Your Cart</h2>
+            <div id="cart-items"></div>
+            <p>Total: $<span id="total-price">0.00</span></p>
+        </section>
+    </main>
+    <footer>
+        <p>Contact us: email@example.com</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
