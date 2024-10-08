@@ -103,7 +103,7 @@ footer {
 #newsletter-signup {
     padding: 2rem;
     background-color: #ffe0b3; /* Soft orange background */
-    text-align: center;
+    align: center;
     margin-top: 45px; /* Add space above the sign-up section */
 }
 
