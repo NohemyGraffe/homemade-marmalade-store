@@ -51,6 +51,15 @@ buttons.forEach(button => {
         localStorage.setItem('cartCount', cartCount);
         localStorage.setItem('cartTotal', cartTotal.toFixed(2));
 
+        // Push the add-to-cart event to the dataLayer for GTM
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'event': 'add_to_cart',
+            'item_name': productName,
+            'item_price': productPrice,
+            'quantity': existingProduct ? existingProduct.quantity : 1
+        });
+
         // Notify the user that the item has been added to the cart
         alert(`${productName} has been added to your cart.`);
     });
@@ -76,3 +85,27 @@ form.addEventListener('submit', function(event) {
     // Optionally clear the form after submission
     form.reset();
 });
+
+// Example function for handling payment completion
+function completePayment() {
+    const transactionId = 'TX' + new Date().getTime(); // Example transaction ID
+    const transactionTotal = cartTotal;
+
+    // Push the payment event to the dataLayer for GTM
+    window.dataLayer.push({
+        'event': 'payment_complete',
+        'transaction_id': transactionId,
+        'transaction_total': transactionTotal
+    });
+
+    // Notify the user
+    alert('Thank you! Your payment was completed successfully.');
+    
+    // Clear cart data
+    localStorage.removeItem('cartItems');
+    localStorage.removeItem('cartCount');
+    localStorage.removeItem('cartTotal');
+    
+    // Redirect to a Thank You page or reload
+    window.location.href = 'thankyou.html';
+}
