@@ -6,7 +6,7 @@ window.onload = function() {
     let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
     let cartTotal = localStorage.getItem('cartTotal') || '0.00';
 
-    // If there are items in the cart, display them
+    // Display cart items
     if (cartItems.length > 0) {
         cartItems.forEach((item, index) => {
             const cartItemElement = document.createElement('div');
@@ -43,11 +43,11 @@ window.onload = function() {
         alert('Proceeding to payment...');
 
         // Define dynamic transaction details
-        const transactionID = `T${Date.now()}`; // Generate a simple transaction ID using a timestamp
+        const transactionID = `T${Date.now()}`;
         const cartTotal = parseFloat(localStorage.getItem('cartTotal')) || 0.00;
 
         // Push transaction details to the Data Layer
-        window.dataLayer = window.dataLayer || []; // Ensure dataLayer is defined
+        window.dataLayer = window.dataLayer || [];
         dataLayer.push({
             'event': 'paymentButtonClick',
             'transactionID': transactionID,
@@ -74,12 +74,13 @@ function removeItemFromCart(index) {
     cartTotal -= itemToRemove.price * itemToRemove.quantity;
     cartItems.splice(index, 1);
 
-    // Update localStorage with new cart data
+    // Update cart count and save to localStorage
+    let cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
     localStorage.setItem('cartTotal', cartTotal.toFixed(2));
+    localStorage.setItem('cartCount', cartCount);
 
     // Reload the cart page to reflect changes
     window.location.reload();
 }
-
 
