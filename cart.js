@@ -61,6 +61,27 @@ function removeItemFromCart(index) {
 document.getElementById('pay-button').addEventListener('click', function() {
     alert('Proceeding to payment...');
 
+    // Define dynamic transaction details
+    const transactionID = `T${Date.now()}`; // Generate a simple transaction ID using a timestamp
+    const cartTotal = parseFloat(localStorage.getItem('cartTotal')) || 0.00;
+
+    // Push transaction details to the Data Layer
+    dataLayer.push({
+        'event': 'paymentButtonClick',
+        'transactionID': transactionID,
+        'amount': cartTotal
+    });
+
+    // Clear cart data from localStorage after payment
+    localStorage.removeItem('cartItems');
+    localStorage.removeItem('cartCount');
+    localStorage.removeItem('cartTotal');
+
+    // Redirect to the Thank You page
+    window.location.href = 'thanks.html';
+});
+
+
     // Clear cart data from localStorage after payment
     localStorage.removeItem('cartItems');
     localStorage.removeItem('cartCount');
