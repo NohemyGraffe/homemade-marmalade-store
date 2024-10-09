@@ -31,6 +31,13 @@ window.onload = function() {
     updateCartDisplay();
 };
 
+// Listen for changes to localStorage and update the cart display
+window.addEventListener('storage', function(event) {
+    if (event.key === 'cartItems' || event.key === 'cartTotal' || event.key === 'cartCount') {
+        updateCartDisplay();
+    }
+});
+
 // When users click the "Buy Now" button, update the cart
 buttons.forEach(button => {
     button.addEventListener('click', function() {
