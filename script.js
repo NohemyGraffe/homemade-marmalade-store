@@ -1,24 +1,34 @@
 // Select the "Buy Now" buttons
 const buttons = document.querySelectorAll('.buy-button');
 
-// Variables to hold cart information
-let cartItemsArray = JSON.parse(localStorage.getItem('cartItems')) || []; // Load from localStorage or initialize empty
-let cartCount = 0; // Initialize to 0 for recalculation
-let cartTotal = parseFloat(localStorage.getItem('cartTotal')) || 0; // Load from localStorage or initialize to 0
-
-// Recalculate the cart count based on the number of items in localStorage
-cartItemsArray.forEach(item => {
-    cartCount += item.quantity; // Add up the quantity of all items in the cart
-});
+// Variables to hold cart information, initially loaded from localStorage
+let cartItemsArray = JSON.parse(localStorage.getItem('cartItems')) || [];
 
 // Select the cart elements in the header (top-right corner)
 const cartCountElement = document.getElementById('cart-count');
 const cartTotalElement = document.getElementById('cart-total');
 
-// On page load, update the cart display with stored data
-window.onload = function() {
+// Function to update the cart display with data from localStorage
+function updateCartDisplay() {
+    // Reload cart data from localStorage
+    cartItemsArray = JSON.parse(localStorage.getItem('cartItems')) || [];
+    let cartCount = 0;
+    let cartTotal = 0;
+
+    // Recalculate cart count and total
+    cartItemsArray.forEach(item => {
+        cartCount += item.quantity;
+        cartTotal += item.price * item.quantity;
+    });
+
+    // Update the display elements
     cartCountElement.textContent = cartCount;
     cartTotalElement.textContent = cartTotal.toFixed(2);
+}
+
+// On page load, update the cart display with stored data
+window.onload = function() {
+    updateCartDisplay();
 };
 
 // When users click the "Buy Now" button, update the cart
@@ -38,9 +48,13 @@ buttons.forEach(button => {
             cartItemsArray.push({ name: productName, price: productPrice, quantity: 1 });
         }
 
-        // Update the number of items in the cart and the total price
-        cartCount++;
-        cartTotal += productPrice;
+        // Update cart count and total
+        let cartCount = 0;
+        let cartTotal = 0;
+        cartItemsArray.forEach(item => {
+            cartCount += item.quantity;
+            cartTotal += item.price * item.quantity;
+        });
 
         // Update the top-right cart display
         cartCountElement.textContent = cartCount;
@@ -71,41 +85,4 @@ cartInfo.addEventListener('click', function() {
     window.location.href = 'cart.html'; // Redirect to cart.html page
 });
 
-// Select the form element
-const form = document.getElementById('signup-form');
-const successMessage = document.getElementById('signup-success-message');
-
-// Add an event listener to handle form submission
-form.addEventListener('submit', function(event) {
-    event.preventDefault();  // Prevent the form from submitting the traditional way (page reload)
-
-    // Display success message after form submission
-    successMessage.style.display = 'block'; // Show the success message
-
-    // Optionally clear the form after submission
-    form.reset();
-});
-
-// Example function for handling payment completion
-function completePayment() {
-    const transactionId = 'TX' + new Date().getTime(); // Example transaction ID
-    const transactionTotal = cartTotal;
-
-    // Push the payment event to the dataLayer for GTM
-    window.dataLayer.push({
-        'event': 'payment_complete',
-        'transaction_id': transactionId,
-        'transaction_total': transactionTotal
-    });
-
-    // Notify the user
-    alert('Thank you! Your payment was completed successfully.');
-    
-    // Clear cart data
-    localStorage.removeItem('cartItems');
-    localStorage.removeItem('cartCount');
-    localStorage.removeItem('cartTotal');
-    
-    // Redirect to a Thank You page or reload
-    window.location.href = 'thankyou.html';
-}
+// Optional: Define your other functions (like form submission and payment completion) here
