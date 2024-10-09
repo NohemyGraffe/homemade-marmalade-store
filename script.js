@@ -21,7 +21,7 @@ function updateCartDisplay() {
         cartTotal += item.price * item.quantity;
     });
 
-    // Update the display elements
+    // Update the display elements with the latest values
     cartCountElement.textContent = cartCount;
     cartTotalElement.textContent = cartTotal.toFixed(2);
 }
