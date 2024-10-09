@@ -78,7 +78,7 @@ function removeItemFromCart(index) {
     let cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
     localStorage.setItem('cartTotal', cartTotal.toFixed(2));
-    localStorage.setItem('cartCount', cartCount);
+    localStorage.setItem('cartCount', cartCount); // Save the updated cart count to localStorage
 
     // Reload the cart page to reflect changes
     window.location.reload();
