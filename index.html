@@ -28,34 +28,65 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </header>
     <main>
-        <section class="product-list">
-            <h2>Our Marmalades</h2>
-            <div class="product">
-                <img src="orange-marmalade.jpg" alt="Classic Orange Marmalade">
-                <h3>Classic Orange Marmalade</h3>
-                <p>$5.00</p>
-                <button class="buy-button" data-product="Classic Orange Marmalade" data-price="5.00">Buy Now</button>
-            </div>
-            <div class="product">
-                <img src="strawberry-marmalade.jpg" alt="Classic Strawberry Marmalade">
-                <h3>Classic Strawberry Marmalade</h3>
-                <p>$6.00</p>
-                <button class="buy-button" data-product="Classic Strawberry Marmalade" data-price="6.00">Buy Now</button>
-            </div>
-            <div class="product">
-                 <img src="spicy-ginger-marmalade.jpg" alt="Spicy Ginger Marmalade">
-                 <h3>Spicy Ginger Marmalade</h3>
-                 <p>$7.00</p>
-                 <button class="buy-button" data-product="Spicy Ginger Marmalade" data-price="7.00">Buy Now</button>
-            </div>
-            <div class="product">
-                <img src="apple-marmalade.jpg" alt="Classic Apple Marmalade">
-                <h3>Apple Marmalade</h3>
-                <p>$6.50</p>
-                <button class="buy-button" data-product="Classic Apple Marmalade" data-price="6.50">Buy Now</button>
-            </div>            
-        </section>
-
+       <section class="product-list">
+    <h2>Our Marmalades</h2>
+    
+    <div class="product">
+        <img src="orange-marmalade.jpg" alt="Classic Orange Marmalade">
+        <h3>Classic Orange Marmalade</h3>
+        <p>$5.00</p>
+        <button class="buy-button" data-product="Classic Orange Marmalade" data-price="5.00"
+                onclick="dataLayer.push({
+                    'event': 'addToCart',
+                    'productName': 'Classic Orange Marmalade',
+                    'productID': 'P001', // Assign a unique ID for each product
+                    'quantity': 1,
+                    'price': 5.00
+                })">Buy Now</button>
+    </div>
+    
+    <div class="product">
+        <img src="strawberry-marmalade.jpg" alt="Classic Strawberry Marmalade">
+        <h3>Classic Strawberry Marmalade</h3>
+        <p>$6.00</p>
+        <button class="buy-button" data-product="Classic Strawberry Marmalade" data-price="6.00"
+                onclick="dataLayer.push({
+                    'event': 'addToCart',
+                    'productName': 'Classic Strawberry Marmalade',
+                    'productID': 'P002',
+                    'quantity': 1,
+                    'price': 6.00
+                })">Buy Now</button>
+    </div>
+    
+    <div class="product">
+        <img src="spicy-ginger-marmalade.jpg" alt="Spicy Ginger Marmalade">
+        <h3>Spicy Ginger Marmalade</h3>
+        <p>$7.00</p>
+        <button class="buy-button" data-product="Spicy Ginger Marmalade" data-price="7.00"
+                onclick="dataLayer.push({
+                    'event': 'addToCart',
+                    'productName': 'Spicy Ginger Marmalade',
+                    'productID': 'P003',
+                    'quantity': 1,
+                    'price': 7.00
+                })">Buy Now</button>
+    </div>
+    
+    <div class="product">
+        <img src="apple-marmalade.jpg" alt="Classic Apple Marmalade">
+        <h3>Apple Marmalade</h3>
+        <p>$6.50</p>
+        <button class="buy-button" data-product="Classic Apple Marmalade" data-price="6.50"
+                onclick="dataLayer.push({
+                    'event': 'addToCart',
+                    'productName': 'Classic Apple Marmalade',
+                    'productID': 'P004',
+                    'quantity': 1,
+                    'price': 6.50
+                })">Buy Now</button>
+    </div>
+</section>
         <section id="newsletter-signup">
             <div class="klaviyo-form-UBchav"></div>
         </section>
