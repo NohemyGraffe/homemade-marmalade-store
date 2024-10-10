@@ -53,14 +53,15 @@ document.getElementById('pay-button').addEventListener('click', function() {
         quantity: item.quantity
     }));
 
-    // Push the purchase event with product details and total amount to dataLayer
-    window.dataLayer = window.dataLayer || [];
-    dataLayer.push({
-        'event': 'purchase',
-        'transactionID': `T${Date.now()}`, // Unique transaction ID
-        'amount': cartTotal,
-        'products': JSON.stringify(purchasedProducts) // Stringify the products array
-    });
+   // Push the purchase event with product details and total amount to dataLayer
+window.dataLayer = window.dataLayer || [];
+dataLayer.push({
+    'event': 'purchase',
+    'transactionID': `T${Date.now()}`, // Unique transaction ID
+    'amount': cartTotal,
+    'products': purchasedProducts // Pass as object, not as string
+});
+
 
     // Clear cart data from localStorage after payment
     localStorage.removeItem('cartItems');
