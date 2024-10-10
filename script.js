@@ -75,7 +75,7 @@ buttons.forEach(button => {
         // Push the add-to-cart event to the dataLayer for GTM
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
-            'event': 'add_to_cart',
+            'event': 'addToCart',
             'item_name': productName,
             'item_price': productPrice,
             'quantity': existingProduct ? existingProduct.quantity : 1
