@@ -56,7 +56,7 @@ document.getElementById('pay-button').addEventListener('click', function() {
     // Push the purchase event with product details and total amount to dataLayer
     window.dataLayer = window.dataLayer || [];
     dataLayer.push({
-        'event': 'paymentButtonClick',
+        'event': 'purchase',
         'transactionID': `T${Date.now()}`, // Unique transaction ID
         'amount': cartTotal,
         'products': JSON.stringify(purchasedProducts) // Stringify the products array
