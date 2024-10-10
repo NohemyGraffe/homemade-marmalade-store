@@ -39,29 +39,38 @@ window.onload = function() {
     });
 
     // Handle the "Proceed to Payment" button
-    document.getElementById('pay-button').addEventListener('click', function() {
-        alert('Proceeding to payment...');
+document.getElementById('pay-button').addEventListener('click', function() {
+    alert('Proceeding to payment...');
 
-        // Define dynamic transaction details
-        const transactionID = `T${Date.now()}`;
-        const cartTotal = parseFloat(localStorage.getItem('cartTotal')) || 0.00;
+    // Get cart data from localStorage
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const cartTotal = parseFloat(localStorage.getItem('cartTotal')) || 0.00;
 
-        // Push transaction details to the Data Layer
-        window.dataLayer = window.dataLayer || [];
-        dataLayer.push({
-            'event': 'paymentButtonClick',
-            'transactionID': transactionID,
-            'amount': cartTotal
-        });
+    // Prepare the list of purchased products for dataLayer
+    const purchasedProducts = cartItems.map(item => ({
+        name: item.name,
+        price: item.price,
+        quantity: item.quantity
+    }));
 
-        // Clear cart data from localStorage after payment
-        localStorage.removeItem('cartItems');
-        localStorage.removeItem('cartCount');
-        localStorage.removeItem('cartTotal');
-
-        // Redirect to the Thank You page
-        window.location.href = 'thanks.html';
+    // Push the purchase event with product details and total amount to dataLayer
+    window.dataLayer = window.dataLayer || [];
+    dataLayer.push({
+        'event': 'paymentButtonClick',
+        'transactionID': `T${Date.now()}`, // Unique transaction ID
+        'amount': cartTotal,
+        'products': purchasedProducts
     });
+
+    // Clear cart data from localStorage after payment
+    localStorage.removeItem('cartItems');
+    localStorage.removeItem('cartCount');
+    localStorage.removeItem('cartTotal');
+
+    // Redirect to the Thank You page
+    window.location.href = 'thanks.html';
+});
+
 };
 
 // Function to remove an item from the cart
