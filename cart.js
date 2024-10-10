@@ -38,7 +38,7 @@ window.onload = function() {
         });
     });
 
-    // Handle the "Proceed to Payment" button
+   // Handle the "Proceed to Payment" button
 document.getElementById('pay-button').addEventListener('click', function() {
     alert('Proceeding to payment...');
 
@@ -59,7 +59,7 @@ document.getElementById('pay-button').addEventListener('click', function() {
         'event': 'paymentButtonClick',
         'transactionID': `T${Date.now()}`, // Unique transaction ID
         'amount': cartTotal,
-        'products': purchasedProducts
+        'products': JSON.stringify(purchasedProducts) // Stringify the products array
     });
 
     // Clear cart data from localStorage after payment
